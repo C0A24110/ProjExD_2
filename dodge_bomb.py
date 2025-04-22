@@ -31,7 +31,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
-def gameover(screen: pg.Surface) -> None
+def gameover(screen: pg.Surface) -> None:
     """
     引数：無し
     戻り値：無し
@@ -83,20 +83,23 @@ def main():
         screen.blit(bg_img, [0, 0]) 
     
         if kk_rct.colliderect(bb_rct):
-            gameover()
+            gameover(screen)
             return
         
         key_lst = pg.key.get_pressed()
         sum_mv = [0, 0]
+
         for key, mv in DELTA.items():
             if key_lst[key]:
                 sum_mv[0] += mv[0]
                 sum_mv[1] += mv[1]
         kk_rct.move_ip(sum_mv)
+
         if check_bound(kk_rct) != (True, True):
             kk_rct.move_ip(-sum_mv[0], -sum_mv[1])
         screen.blit(kk_img, kk_rct)
         bb_rct.move_ip(vx, vy)
+        
         yoko, tate = check_bound(bb_rct)
         if not yoko:
             vx *= -1
@@ -104,13 +107,9 @@ def main():
             vy *= -1
         screen.blit(bb_img, bb_rct)
 
-        
         tmr += 1
         clock.tick(50)
-
-
         pg.display.update()
-
 
 
 if __name__ == "__main__":

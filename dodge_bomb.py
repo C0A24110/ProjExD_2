@@ -31,7 +31,7 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
-def gameover(screen: pg.Surface) -> None
+def gameover(screen: pg.Surface) -> None:
     """
     引数：無し
     戻り値：無し
@@ -83,7 +83,7 @@ def main():
         screen.blit(bg_img, [0, 0]) 
     
         if kk_rct.colliderect(bb_rct):
-            gameover()
+            gameover(screen)
             return
         
         key_lst = pg.key.get_pressed()

@@ -31,7 +31,12 @@ def check_bound(rct: pg.Rect) -> tuple[bool, bool]:
     return yoko, tate
 
 
-def gameover():
+def gameover(screen: pg.Surface) -> None
+    """
+    引数：無し
+    戻り値：無し
+    ゲームオーバーした際に、ブラックアウトし文字と画像が表示される
+    """
     screen = pg.display.set_mode((WIDTH, HEIGHT))
     # 背景画像
     bg_img = pg.image.load("fig/pg_bg.jpg") 
@@ -52,9 +57,8 @@ def gameover():
     screen.blit(kt_img, [(WIDTH/4)*3, 300])
 
     pg.display.update()
-    time.sleep(2)
+    time.sleep(5)
     
-
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
